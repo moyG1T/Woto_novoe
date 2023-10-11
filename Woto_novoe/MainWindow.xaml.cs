@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Woto_novoe.Components;
 
 namespace Woto_novoe
 {
@@ -23,6 +24,8 @@ namespace Woto_novoe
         public MainWindow()
         {
             InitializeComponent();
+
+            MainFrame.Navigate(new ProductsList());
         }
     }
 }
