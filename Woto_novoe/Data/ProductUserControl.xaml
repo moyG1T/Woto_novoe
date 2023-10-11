@@ -13,24 +13,27 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ProductNameImage" Grid.Row="0"></Image>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image x:Name="ProductNameImage" Grid.Row="0" Margin="5"></Image>
+            <TextBlock x:Name="ImageDiscountText">*%</TextBlock>   
+        </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <TextBlock x:Name="ProductNameText">Name</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <TextBlock>Rating</TextBlock>
-                <TextBlock>Review Amount</TextBlock>
+                <TextBlock x:Name="RatingText" Foreground="Red">★Rating</TextBlock>
+                <TextBlock x:Name="ReviewAmountText" Foreground="Gray">Review Amount</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock>Cost w/ discount</TextBlock>
-                <TextBlock>Cost</TextBlock>
+                <TextBlock x:Name="CostWDiscountText">Cost w/ discount</TextBlock>
+                <TextBlock x:Name="CostText">Cost</TextBlock>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-            <Button>В корзину</Button>
-            <Button>В избранное</Button>
-            <Button>Сравнить</Button>
+            <Button x:Name="BusketButton">В корзину</Button>
+            <Button x:Name="FollowButton">В избранное</Button>
+            <Button x:Name="CompareButton">Сравнить</Button>
         </StackPanel>
     </Grid>
 </UserControl>
