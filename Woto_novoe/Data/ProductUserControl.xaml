@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Woto_novoe.Data.ProductUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Woto_novoe.Data"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="ProductNameImage" Grid.Row="0"></Image>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock x:Name="ProductNameText">Name</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Rating</TextBlock>
+                <TextBlock>Review Amount</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Cost w/ discount</TextBlock>
+                <TextBlock>Cost</TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button>В корзину</Button>
+            <Button>В избранное</Button>
+            <Button>Сравнить</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
