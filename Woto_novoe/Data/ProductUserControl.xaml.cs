@@ -34,7 +34,10 @@ namespace Woto_novoe.Data
             
            // RatingText.Text = product.Feedback.ToList().Count().ToString();
             RatingText.Text = product.GetAverageFeedback;
+            RatingText.Visibility = product.FeedbackVisibility;
             ReviewAmountText.Text = product.GetFeedbackAmount;
+            DiscountImageText.Text = $"-{product.Discount.ToString()}%";
+            DiscountImageText.Visibility = product.DiscountVisibility;
         }
     }
 }

@@ -32,9 +32,23 @@ namespace Woto_novoe.Data
             get
             {
                 if (Feedback.Count() == 0)
-                    return "Отзывов нет";
+                    return "Отзывов нет"; 
+                if (Feedback.Count() == 1)
+                    return $"{Feedback.Count()} отзыв";
+                else if (Feedback.Count() > 1 && Feedback.Count() < 5)
+                    return $"{Feedback.Count()} отзыва";
                 else
-                    return $"{Feedback.Count()} отзыв(ов)";
+                    return $"{Feedback.Count()} отзывов";
+            }
+        }
+        public Visibility FeedbackVisibility
+        {
+            get
+            {
+                if (Feedback.Count() == 0)
+                    return Visibility.Collapsed;
+                else 
+                    return Visibility.Visible;
             }
         }
         public string GetDiscountCost
@@ -54,6 +68,16 @@ namespace Woto_novoe.Data
             {
                 if (Discount == 0 || Discount == null)
                     return Visibility.Collapsed;
+                else
+                    return Visibility.Visible;
+            }
+        }
+        public Visibility DiscountVisibility
+        {
+            get
+            {
+                if (Discount == 0 || Discount == null)
+                    return Visibility.Hidden;
                 else
                     return Visibility.Visible;
             }
