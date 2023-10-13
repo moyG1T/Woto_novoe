@@ -24,9 +24,10 @@ namespace Woto_novoe.Comps
         public ProductList()
         {
             InitializeComponent();
-            var list = App.db.Product.ToList();
+            var productList = App.db.Product.ToList();
+            var feedbackList = App.db.Feedback.ToList();
 
-            foreach (var item in list)
+            foreach (var item in productList)
             {
                 ProductWrap.Children.Add(new ProductUserControl(item));
             }

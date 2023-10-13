@@ -25,11 +25,16 @@ namespace Woto_novoe.Data
             InitializeComponent();
 
             // ProductImage. = new BitmapImage(new Uri(""));
-            ProductNameText.Text = product.Title;
             // RatingText.Text = product.
+
+            ProductNameText.Text = product.Title;
             CostWDiscountText.Text = product.GetDiscountCost;
             CostText.Text = product.Cost.ToString("0₽");
             CostText.Visibility = product.CostVisibility;
+            
+           // RatingText.Text = product.Feedback.ToList().Count().ToString();
+            RatingText.Text = product.GetAverageFeedback;
+            ReviewAmountText.Text = product.GetFeedbackAmount;
         }
     }
 }

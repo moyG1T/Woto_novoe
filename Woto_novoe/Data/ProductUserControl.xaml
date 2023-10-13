@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image x:Name="ProductImage" Grid.Row="0" Margin="5"></Image>
+                <Image x:Name="ProductImage" Grid.Row="0" Margin="5" Source="\Resources\zaglushka.png"></Image>
                 <TextBlock x:Name="DiscountImageText">*%</TextBlock>
             </StackPanel>
 

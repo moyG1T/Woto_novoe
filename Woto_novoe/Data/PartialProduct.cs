@@ -9,6 +9,34 @@ namespace Woto_novoe.Data
 {
     public partial class Product
     {
+        public string GetAverageFeedback
+        {
+            get
+            {
+                double avg = 0;
+                if (Feedback.Count() == 0)
+                {
+                    return "Оценок нет";
+                }
+                else
+                {
+                    foreach (var item in Feedback)
+                        avg += item.Evaluation;
+
+                    return $"{avg / Feedback.Count():f1}";
+                }
+            }
+        }
+        public string GetFeedbackAmount
+        {
+            get
+            {
+                if (Feedback.Count() == 0)
+                    return "Отзывов нет";
+                else
+                    return $"{Feedback.Count()} отзыв(ов)";
+            }
+        }
         public string GetDiscountCost
         {
             get
