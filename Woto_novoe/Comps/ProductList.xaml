@@ -14,11 +14,13 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
-        <ScrollViewer Grid.Row="1">
-            <WrapPanel x:Name="ProductWrap">
-                
-            </WrapPanel>
+        <ComboBox x:Name="SortCombo" HorizontalAlignment="Left">
+            <ComboBoxItem>По умолчанию</ComboBoxItem>
+            <ComboBoxItem>По убыванию</ComboBoxItem>
+            <ComboBoxItem>По возрастанию</ComboBoxItem>
+        </ComboBox>
+        <ScrollViewer Grid.Row="1" >
+            <WrapPanel x:Name="ProductWrap"/>
         </ScrollViewer>
     </Grid>
 </Page>

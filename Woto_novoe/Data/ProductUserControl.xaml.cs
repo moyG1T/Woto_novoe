@@ -24,11 +24,12 @@ namespace Woto_novoe.Data
         {
             InitializeComponent();
 
-            // ProductNameImage.Image = 
+            // ProductImage. = new BitmapImage(new Uri(""));
             ProductNameText.Text = product.Title;
             // RatingText.Text = product.
-            CostWDiscountText.Text = product.GetCost;
-            // CostText.Text = ;
+            CostWDiscountText.Text = product.GetDiscountCost;
+            CostText.Text = product.Cost.ToString("0₽");
+            CostText.Visibility = product.CostVisibility;
         }
     }
 }
