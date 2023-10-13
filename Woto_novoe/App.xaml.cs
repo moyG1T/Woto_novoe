@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Woto_novoe.Data;
 
 namespace Woto_novoe
 {
@@ -13,5 +14,6 @@ namespace Woto_novoe
     /// </summary>
     public partial class App : Application
     {
+        HardwareShop_woto_novoeEntities db = new HardwareShop_woto_novoeEntities();
     }
 }
