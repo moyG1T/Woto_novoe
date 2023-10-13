@@ -15,5 +15,10 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <ScrollViewer Grid.Row="1">
+            <WrapPanel x:Name="ProductWrap">
+                
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

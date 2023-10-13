@@ -103,6 +103,7 @@
     <Compile Include="Data\Feedback.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\PartialProduct.cs" />
     <Compile Include="Data\Product.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>

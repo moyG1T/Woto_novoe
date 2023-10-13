@@ -20,9 +20,15 @@ namespace Woto_novoe.Data
     /// </summary>
     public partial class ProductUserControl : UserControl
     {
-        public ProductUserControl()
+        public ProductUserControl(Product product)
         {
             InitializeComponent();
+
+            // ProductNameImage.Image = 
+            ProductNameText.Text = product.Title;
+            // RatingText.Text = product.
+            CostWDiscountText.Text = product.GetCost;
+            // CostText.Text = ;
         }
     }
 }

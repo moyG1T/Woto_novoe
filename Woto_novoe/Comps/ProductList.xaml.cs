@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Woto_novoe.Data;
 
 namespace Woto_novoe.Comps
 {
@@ -23,6 +24,13 @@ namespace Woto_novoe.Comps
         public ProductList()
         {
             InitializeComponent();
+            var list = App.db.Product.ToList();
+
+            foreach (var item in list)
+            {
+                ProductWrap.Children.Add(new ProductUserControl(item));
+            }
         }
+
     }
 }

@@ -14,6 +14,6 @@ namespace Woto_novoe
     /// </summary>
     public partial class App : Application
     {
-        HardwareShop_woto_novoeEntities db = new HardwareShop_woto_novoeEntities();
+        public static HardwareShop_woto_novoeEntities db = new HardwareShop_woto_novoeEntities();
     }
 }
