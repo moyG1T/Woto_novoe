@@ -23,7 +23,7 @@ namespace Woto_novoe.Data
                     foreach (var item in Feedback)
                         avg += item.Evaluation;
 
-                    return $"{avg / Feedback.Count():f1}";
+                    return $"★ {avg / Feedback.Count():f1}";
                 }
             }
         }
