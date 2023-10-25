@@ -26,6 +26,8 @@ namespace Woto_novoe
             InitializeComponent();
 
             MainFrame.Navigate(new ProductList());
+
+            //var path = @"C:\Users\212119\Desktop\.pics";
         }
     }
 }
