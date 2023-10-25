@@ -51,14 +51,15 @@ namespace Woto_novoe.Data
                     return Visibility.Visible;
             }
         }
-        public string GetDiscountCost
+
+        public decimal GetDiscountCost
         {
             get
             {
                 if (Discount == 0 || Discount == null)
-                    return $"{Cost:0}₽";
+                    return (decimal)Cost;
                 else
-                    return $"{Cost - (Cost * (decimal)Discount) / 100:0}₽";
+                    return (decimal)Cost - ((decimal)Cost * (decimal)Discount) / 100;
             }
         }
 

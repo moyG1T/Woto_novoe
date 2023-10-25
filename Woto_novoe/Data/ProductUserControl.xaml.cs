@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,24 +21,38 @@ namespace Woto_novoe.Data
     /// </summary>
     public partial class ProductUserControl : UserControl
     {
+        Product product;
         public ProductUserControl(Product product)
         {
+            this.product = product;
             InitializeComponent();
 
-            // ProductImage. = new BitmapImage(new Uri(""));
-            // RatingText.Text = product.
-
+            ProductImage.Source = GetImage(product.MainImage);
             ProductNameText.Text = product.Title;
-            CostWDiscountText.Text = product.GetDiscountCost;
-            CostText.Text = product.Cost.ToString("0₽");
+            CostWDiscountText.Text = $"{product.GetDiscountCost:0}₽";
+            CostText.Text = $"{product.Cost:0}₽";
             CostText.Visibility = product.CostVisibility;
             
-           // RatingText.Text = product.Feedback.ToList().Count().ToString();
             RatingText.Text = product.GetAverageFeedback;
             RatingText.Visibility = product.FeedbackVisibility;
             ReviewAmountText.Text = product.GetFeedbackAmount;
             DiscountImageText.Text = $"-{product.Discount}%";
             DiscountImageText.Visibility = product.DiscountVisibility;
+        }
+
+        private BitmapImage GetImage(byte[] byteImage)
+        {
+            if (byteImage != null)
+            {
+                MemoryStream memoryStream = new MemoryStream(byteImage);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = memoryStream;
+                image.EndInit();
+                return image;
+            }
+            else
+                return new BitmapImage(new Uri(@"\Resources\zaglushka.png", UriKind.Relative));
         }
     }
 }

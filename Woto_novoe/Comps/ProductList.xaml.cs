@@ -24,14 +24,73 @@ namespace Woto_novoe.Comps
         public ProductList()
         {
             InitializeComponent();
-            var productList = App.db.Product.ToList();
-            var feedbackList = App.db.Feedback.ToList();
 
-            foreach (var item in productList)
-            {
-                ProductWrap.Children.Add(new ProductUserControl(item));
-            }
+            CostSortCombo.SelectedIndex = 0;
+            DiscountSortCombo.SelectedIndex = 0;
+            RefreshFilters();
         }
 
+        private void RefreshFilters()
+        {
+            IEnumerable<Product> productsList = App.db.Product;
+
+            if (CostSortCombo.SelectedIndex != 0)
+            {
+                if (CostSortCombo.SelectedIndex == 1)
+                    productsList = productsList.OrderBy(x => x.GetDiscountCost);
+                else if (CostSortCombo.SelectedIndex == 2)
+                    productsList = productsList.OrderByDescending(x => x.GetDiscountCost);
+            }
+
+            if (DiscountSortCombo.SelectedIndex != 0)
+            {
+                if (DiscountSortCombo.SelectedIndex == 1)
+                    productsList = productsList.Where(x => x.Discount <= 15);
+                else if (DiscountSortCombo.SelectedIndex == 2)
+                    productsList = productsList.Where(x => x.Discount >= 15 && x.Discount <= 50);
+                else if (DiscountSortCombo.SelectedIndex == 3)
+                    productsList = productsList.Where(x => x.Discount >= 50);
+            }
+
+            if (SearchBox.Text != "" || SearchBox.Text != null)
+            {
+                productsList = productsList.Where(x =>
+                x.Title.ToLower().Contains(SearchBox.Text.ToLower()) ||
+                x.Description.ToLower().Contains(SearchBox.Text.ToLower()));
+            }
+
+            RefreshList(productsList);
+        }
+
+        private void RefreshList(IEnumerable<Product> productsList)
+        {
+            ProductWrap.Children.Clear();
+
+            foreach (Product item in productsList)
+                ProductWrap.Children.Add(new ProductUserControl(item));
+        }
+
+        private void CostSortCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            => RefreshFilters();
+
+        private void DiscountSortCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            => RefreshFilters();
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+            => RefreshFilters();
+
+        private void ClearSearchTextButton_Click(object sender, RoutedEventArgs e)
+        { 
+            SearchBox.Text = "";
+            RefreshFilters();
+        }
+
+        private void ClearEachFilter_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Text = "";
+            CostSortCombo.SelectedIndex = 0;
+            DiscountSortCombo.SelectedIndex = 0;
+            RefreshFilters();
+        }
     }
 }

@@ -16,13 +16,13 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="1">
             <StackPanel Orientation="Vertical" >
                 <TextBlock>По цене</TextBlock>
-                <ComboBox x:Name="CostSortCombo" HorizontalAlignment="Left">
+                <ComboBox x:Name="CostSortCombo" HorizontalAlignment="Left" SelectionChanged="CostSortCombo_SelectionChanged">
                     <ComboBoxItem>По умолчанию</ComboBoxItem>
                     <ComboBoxItem>По возрастанию</ComboBoxItem>
                     <ComboBoxItem>По убыванию</ComboBoxItem>
@@ -31,7 +31,8 @@
 
             <StackPanel Orientation="Vertical">
                 <TextBlock>По скидке</TextBlock>
-                <ComboBox x:Name="DiscountSortCombo" HorizontalAlignment="Left">
+                <ComboBox  x:Name="DiscountSortCombo" HorizontalAlignment="Left" SelectionChanged="DiscountSortCombo_SelectionChanged">
+                    <ComboBoxItem>По умолчанию</ComboBoxItem>
                     <ComboBoxItem>До 15%</ComboBoxItem>
                     <ComboBoxItem>15-50%</ComboBoxItem>
                     <ComboBoxItem>От 50%</ComboBoxItem>
@@ -39,11 +40,15 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock>Поиск</TextBlock>
-                <TextBox x:Name="SearchBox" Height="40" Width="200" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <Button x:Name="ClearSearchTextButton" Click="ClearSearchTextButton_Click">Очистить поиск текста</Button>
+                <Button x:Name="ClearEachFilter" Click="ClearEachFilter_Click">Очистить фильтры</Button>
             </StackPanel>
         </StackPanel>
         <Border BorderThickness="0,5,0,5" BorderBrush="Orange" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-            <ScrollViewer  Grid.Row="1" Grid.Column="1">
+            <ScrollViewer Grid.Row="1" Grid.Column="1">
                 <WrapPanel x:Name="ProductWrap" HorizontalAlignment="Center"/>
             </ScrollViewer>
         </Border>
