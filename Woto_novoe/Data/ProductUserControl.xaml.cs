@@ -23,12 +23,13 @@ namespace Woto_novoe.Data
     public partial class ProductUserControl : UserControl
     {
         Product product;
-        public ProductUserControl(Product product)
+        public ProductUserControl(Product _product)
         {
-            this.product = product;
-            InitializeComponent();
 
-            Navigation.Navigation.productUserControl = this;
+            InitializeComponent();
+            product = _product;
+            //Navigation.Navigation.productUserControl = this;
+            EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
             ProductImage.Source = GetImage(product.MainImage);
             ProductNameText.Text = product.Title;
@@ -41,7 +42,6 @@ namespace Woto_novoe.Data
             ReviewAmountText.Text = product.GetFeedbackAmount;
             DiscountImageText.Text = $"-{product.Discount}%";
             DiscountImageText.Visibility = product.DiscountVisibility;
-            EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private BitmapImage GetImage(byte[] byteImage)

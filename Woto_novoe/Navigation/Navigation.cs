@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using Woto_novoe.Comps;
 using Woto_novoe.Data;
 
@@ -16,6 +17,8 @@ namespace Woto_novoe.Navigation
         public static MainWindow mainWindow;
         public static ProductList productList;
         public static ProductUserControl productUserControl;
+
+
 
         public static void Navigate(PageParticulars page)
         {
@@ -41,9 +44,9 @@ namespace Woto_novoe.Navigation
             productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
             productList.ProductActionListText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
-            //productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
-            productUserControl.EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            //productUserControl.EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
             mainWindow.Title = page.Title;
             mainWindow.ScreenTitleText.Text = page.Title;
@@ -54,7 +57,8 @@ namespace Woto_novoe.Navigation
         {
             App.isModerator = false;
             history.Clear();
-            Navigate(Constants.PRODUCT_LIST_SCREEN);
+            //Navigate(Constants.PRODUCT_LIST_SCREEN);
+           
         }
     }
 }

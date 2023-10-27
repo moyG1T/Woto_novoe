@@ -32,7 +32,7 @@ namespace Woto_novoe.Comps
             {
                 App.isModerator = true;
                 AuthBox.Text = "";
-                Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
+                Navigation.Navigation.Navigate(new PageParticulars("Главная", new ProductList()));
             }
             else
             {

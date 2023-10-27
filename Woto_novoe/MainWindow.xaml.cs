@@ -28,7 +28,7 @@ namespace Woto_novoe
             InitializeComponent();
 
             Navigation.Navigation.mainWindow = this;
-            Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
+            Navigation.Navigation.Navigate(Constants.pages[1]);
 
             //var path = @"C:\Users\212119\Desktop\.pics";
             /*foreach (var item in App.db.Product.ToArray())
@@ -40,7 +40,7 @@ namespace Woto_novoe
 
         private void LogInAsModeratorButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.Navigation.Navigate(Constants.LOGIN_SCREEN);
+            Navigation.Navigation.Navigate(Constants.pages[0]);
         }
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
@@ -51,6 +51,7 @@ namespace Woto_novoe
         private void LogOutAsModeratorButton_Click(object sender, RoutedEventArgs e)
         {
             Navigation.Navigation.DropHistory();
+            Navigation.Navigation.Navigate(Constants.pages[1]);
         }
     }
 }

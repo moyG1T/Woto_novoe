@@ -9,7 +9,10 @@ namespace Woto_novoe.Navigation
 {
     internal class Constants
     {
-        static public PageParticulars LOGIN_SCREEN = new PageParticulars("Авторизация", new Authorization());
-        static public PageParticulars PRODUCT_LIST_SCREEN = new PageParticulars("Главная", new ProductList());
+        public static List<PageParticulars> pages = new List<PageParticulars>
+        {
+            new PageParticulars("Авторизация", new Authorization()),
+            new PageParticulars("Главная", new ProductList())
+        };
     }
 }
