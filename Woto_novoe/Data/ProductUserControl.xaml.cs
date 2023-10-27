@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Woto_novoe.Data;
 
 namespace Woto_novoe.Data
 {
@@ -27,6 +28,8 @@ namespace Woto_novoe.Data
             this.product = product;
             InitializeComponent();
 
+            Navigation.Navigation.productUserControl = this;
+
             ProductImage.Source = GetImage(product.MainImage);
             ProductNameText.Text = product.Title;
             CostWDiscountText.Text = $"{product.GetDiscountCost:0}₽";
@@ -38,6 +41,7 @@ namespace Woto_novoe.Data
             ReviewAmountText.Text = product.GetFeedbackAmount;
             DiscountImageText.Text = $"-{product.Discount}%";
             DiscountImageText.Visibility = product.DiscountVisibility;
+            EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private BitmapImage GetImage(byte[] byteImage)

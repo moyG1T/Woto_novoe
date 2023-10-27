@@ -26,6 +26,7 @@ namespace Woto_novoe
         public MainWindow()
         {
             InitializeComponent();
+
             Navigation.Navigation.mainWindow = this;
             Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
 
@@ -45,6 +46,11 @@ namespace Woto_novoe
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
             Navigation.Navigation.NavigateAndPop();
+        }
+
+        private void LogOutAsModeratorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.DropHistory();
         }
     }
 }

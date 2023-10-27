@@ -13,6 +13,7 @@
             <TextBlock>Пароль</TextBlock>
             <TextBox x:Name="AuthBox"></TextBox>
             <Button x:Name="LogInButton" Click="LogInButton_Click">Войти</Button>
+            <TextBlock x:Name="ErrorText" HorizontalAlignment="Center"></TextBlock>
         </StackPanel>
     </Grid>
 </Page>

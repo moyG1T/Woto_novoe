@@ -25,9 +25,15 @@ namespace Woto_novoe.Comps
         {
             InitializeComponent();
 
+            Navigation.Navigation.productList = this;
+
             CostSortCombo.SelectedIndex = 0;
             DiscountSortCombo.SelectedIndex = 0;
             RefreshFilters();
+        }
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void RefreshFilters()
@@ -92,5 +98,6 @@ namespace Woto_novoe.Comps
             DiscountSortCombo.SelectedIndex = 0;
             RefreshFilters();
         }
+
     }
 }

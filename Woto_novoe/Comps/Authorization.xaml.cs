@@ -24,17 +24,22 @@ namespace Woto_novoe.Comps
         public Authorization()
         {
             InitializeComponent();
-
-            // Navigation.Navigation.NavigateAndPop(Constants.LOGIN_SCREEN);
         }
 
-        private void LogInButton_Click(object sender, RoutedEventArgs e)
+        private async void LogInButton_Click(object sender, RoutedEventArgs e)
         {
             if (AuthBox.Text == "000")
             {
                 App.isModerator = true;
+                AuthBox.Text = "";
+                Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
             }
-            Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
+            else
+            {
+                ErrorText.Text = "Неправильный пароль";
+                await Task.Delay(5000);
+                ErrorText.Text = "";
+            }
         }
     }
 }
