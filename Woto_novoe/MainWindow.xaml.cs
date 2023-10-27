@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Woto_novoe.Comps;
+using Woto_novoe.Navigation;
 
 namespace Woto_novoe
 {
@@ -25,8 +26,8 @@ namespace Woto_novoe
         public MainWindow()
         {
             InitializeComponent();
-
-            MainFrame.Navigate(new ProductList());
+            Navigation.Navigation.mainWindow = this;
+            Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
 
             //var path = @"C:\Users\212119\Desktop\.pics";
             /*foreach (var item in App.db.Product.ToArray())
@@ -34,6 +35,16 @@ namespace Woto_novoe
                 item.MainImage = File.ReadAllBytes(item.ImagePath);
             }
             App.db.SaveChanges();*/
+        }
+
+        private void LogInAsModeratorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(Constants.LOGIN_SCREEN);
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.NavigateAndPop();
         }
     }
 }

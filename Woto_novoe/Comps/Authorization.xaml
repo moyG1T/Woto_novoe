@@ -12,6 +12,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock>Пароль</TextBlock>
             <TextBox x:Name="AuthBox"></TextBox>
+            <Button x:Name="LogInButton" Click="LogInButton_Click">Войти</Button>
         </StackPanel>
     </Grid>
 </Page>

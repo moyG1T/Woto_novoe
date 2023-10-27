@@ -132,6 +132,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Navigation\Constants.cs" />
     <Compile Include="Navigation\Navigation.cs" />
     <Compile Include="Navigation\PageParticulars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

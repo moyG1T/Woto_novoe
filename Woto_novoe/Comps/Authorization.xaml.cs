@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Woto_novoe.Navigation;
 
 namespace Woto_novoe.Comps
 {
@@ -23,10 +24,17 @@ namespace Woto_novoe.Comps
         public Authorization()
         {
             InitializeComponent();
+
+            // Navigation.Navigation.NavigateAndPop(Constants.LOGIN_SCREEN);
+        }
+
+        private void LogInButton_Click(object sender, RoutedEventArgs e)
+        {
             if (AuthBox.Text == "000")
             {
                 App.isModerator = true;
             }
+            Navigation.Navigation.Navigate(Constants.PRODUCT_LIST_SCREEN);
         }
     }
 }

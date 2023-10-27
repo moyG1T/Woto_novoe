@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Woto_novoe.Navigation
 {
@@ -17,16 +18,21 @@ namespace Woto_novoe.Navigation
             RefreshPageParticularts(page);
         }
 
-        public static void NavigateAndPop(PageParticulars page)
+        public static void NavigateAndPop()
         {
-            history.RemoveAt(history.Count - 1);
-            RefreshPageParticularts(history[history.Count - 1]);
+            if (history.Count > 1)
+            {
+                history.RemoveAt(history.Count - 1);
+                RefreshPageParticularts(history[history.Count - 1]);
+            }
         }
 
         private static void RefreshPageParticularts(PageParticulars page)
         {
             mainWindow.Title = page.Title;
             mainWindow.MainFrame.Navigate(page.Page);
+            mainWindow.ModeratorModeText.Text = App.isModerator ? "Режим модератора активен" : "Режим модератора не активен";
+            mainWindow.ModeratorModeText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Hidden;
         }
 
         public static void DropHistory()

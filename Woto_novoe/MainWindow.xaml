@@ -17,13 +17,19 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Border Background="Orange" Grid.ColumnSpan="3" Grid.Row="0"></Border>
-
-        <TextBlock Foreground="White" FontSize="40" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center">Главная</TextBlock>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column ="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="LogInAsModeratorButton" Click="LogInAsModeratorButton_Click">Войти как модератор</Button>
+            <Button x:Name="LogOutAsModeratorButton">Выйти</Button>
+        </StackPanel>
+        <StackPanel Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock x:Name="ScreenTitleText" Foreground="White" FontSize="40" HorizontalAlignment="Center">Главная</TextBlock>
+            <TextBlock x:Name="ModeratorModeText" Foreground="White" FontSize="14" HorizontalAlignment="Center">Режим модератора</TextBlock>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column ="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button>Назад</Button>
-            <Button>Выход</Button>
+            <Button x:Name="GoBackButton" Click="GoBackButton_Click">Назад</Button>
         </StackPanel>
 
-        <Frame x:Name="MainFrame" Grid.ColumnSpan="2" Margin="0,118,0,0" Grid.RowSpan="2"/>
+        <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.Row="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
