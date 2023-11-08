@@ -16,9 +16,6 @@ namespace Woto_novoe.Navigation
         private static List<PageParticulars> history = new List<PageParticulars>();
         public static MainWindow mainWindow;
         public static ProductList productList;
-        public static ProductUserControl productUserControl;
-
-
 
         public static void Navigate(PageParticulars page)
         {
@@ -34,10 +31,16 @@ namespace Woto_novoe.Navigation
                 RefreshPageParticularts(history[history.Count - 1]);
             }
         }
+        public static void NavigateAsModer(PageParticulars page)
+        {
+            history.Clear();
+            Navigate(page);
+        }
 
         private static void RefreshPageParticularts(PageParticulars page)
         {
             mainWindow.ModeratorModeText.Text = App.isModerator ? "Режим модератора активен" : "Режим модератора не активен";
+            mainWindow.GoBackButton.Visibility = history.Count > 1 ? Visibility.Visible : Visibility.Hidden;
 
             mainWindow.ModeratorModeText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
             mainWindow.LogOutAsModeratorButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Hidden;
@@ -45,8 +48,6 @@ namespace Woto_novoe.Navigation
 
             productList.ProductActionListText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
             productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
-
-            //productUserControl.EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
             mainWindow.Title = page.Title;
             mainWindow.ScreenTitleText.Text = page.Title;
@@ -57,8 +58,6 @@ namespace Woto_novoe.Navigation
         {
             App.isModerator = false;
             history.Clear();
-            //Navigate(Constants.PRODUCT_LIST_SCREEN);
-           
         }
     }
 }

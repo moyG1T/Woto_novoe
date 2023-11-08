@@ -32,11 +32,11 @@ namespace Woto_novoe.Comps
             {
                 App.isModerator = true;
                 AuthBox.Text = "";
-                Navigation.Navigation.Navigate(new PageParticulars("Главная", new ProductList()));
+                Navigation.Navigation.NavigateAsModer(new PageParticulars("Главная", new ProductList()));
             }
             else
             {
-                ErrorText.Text = "Неправильный пароль";
+                ErrorText.Text = "Неправильно";
                 await Task.Delay(5000);
                 ErrorText.Text = "";
             }
