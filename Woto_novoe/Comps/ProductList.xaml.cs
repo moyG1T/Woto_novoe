@@ -25,15 +25,16 @@ namespace Woto_novoe.Comps
         {
             InitializeComponent();
 
-            Navigation.Navigation.productList = this;
+            App.productList = this;
 
             CostSortCombo.SelectedIndex = 0;
             DiscountSortCombo.SelectedIndex = 0;
+
             RefreshFilters();
         }
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.Navigation.Navigate(new Navigation.PageParticulars("Добавление продукта", new EditProduct(new Product())));
         }
 
         private void RefreshFilters()

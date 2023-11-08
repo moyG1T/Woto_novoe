@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Woto_novoe.Comps;
 using Woto_novoe.Data;
 
 namespace Woto_novoe.Data
@@ -57,6 +58,11 @@ namespace Woto_novoe.Data
             }
             else
                 return new BitmapImage(new Uri(@"\Resources\zaglushka.png", UriKind.Relative));
+        }
+
+        private void EditProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new Navigation.PageParticulars("Редактирование", new EditProduct(product)));
         }
     }
 }

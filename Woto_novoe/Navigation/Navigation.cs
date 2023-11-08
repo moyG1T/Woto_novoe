@@ -14,8 +14,6 @@ namespace Woto_novoe.Navigation
     internal class Navigation
     {
         private static List<PageParticulars> history = new List<PageParticulars>();
-        public static MainWindow mainWindow;
-        public static ProductList productList;
 
         public static void Navigate(PageParticulars page)
         {
@@ -39,19 +37,20 @@ namespace Woto_novoe.Navigation
 
         private static void RefreshPageParticularts(PageParticulars page)
         {
-            mainWindow.ModeratorModeText.Text = App.isModerator ? "Режим модератора активен" : "Режим модератора не активен";
-            mainWindow.GoBackButton.Visibility = history.Count > 1 ? Visibility.Visible : Visibility.Hidden;
+            App.mainWindow.ModeratorModeText.Text = App.isModerator ? "Режим модератора активен" : "Режим модератора не активен";
+            App.mainWindow.GoBackButton.Visibility = history.Count > 1 ? Visibility.Visible : Visibility.Hidden;
+            App.mainWindow.LogInAsModeratorButton.Visibility = App.isModerator ? Visibility.Collapsed: Visibility.Visible;
 
-            mainWindow.ModeratorModeText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
-            mainWindow.LogOutAsModeratorButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Hidden;
+            App.mainWindow.ModeratorModeText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            App.mainWindow.LogOutAsModeratorButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Hidden;
 
-            productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
-            productList.ProductActionListText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
-            productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            App.productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            App.productList.ProductActionListText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            App.productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
-            mainWindow.Title = page.Title;
-            mainWindow.ScreenTitleText.Text = page.Title;
-            mainWindow.MainFrame.Navigate(page.Page);
+            App.mainWindow.Title = page.Title;
+            App.mainWindow.ScreenTitleText.Text = page.Title;
+            App.mainWindow.MainFrame.Navigate(page.Page);
         }
 
         public static void DropHistory()

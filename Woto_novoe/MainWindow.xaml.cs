@@ -27,7 +27,7 @@ namespace Woto_novoe
         {
             InitializeComponent();
 
-            Navigation.Navigation.mainWindow = this;
+            App.mainWindow = this;
             Navigation.Navigation.Navigate(Constants.pages[1]);
 
             //var path = @"C:\Users\212119\Desktop\.pics";

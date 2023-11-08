@@ -38,7 +38,7 @@
                     <Button x:Name="CompareButton">Сравнить</Button>
                 </StackPanel>
             </Grid>
-            <Button x:Name="EditProductButton">Редактировать</Button>
+            <Button x:Name="EditProductButton" Click="EditProductButton_Click">Редактировать</Button>
         </StackPanel>
     </Border>
 </UserControl>
