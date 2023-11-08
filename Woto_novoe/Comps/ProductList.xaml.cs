@@ -65,13 +65,7 @@ namespace Woto_novoe.Comps
                 x.Description.ToLower().Contains(SearchBox.Text.ToLower()));
             }
 
-            RefreshList(productsList);
-        }
-
-        private void RefreshList(IEnumerable<Product> productsList)
-        {
             ProductWrap.Children.Clear();
-
             foreach (Product item in productsList)
                 ProductWrap.Children.Add(new ProductUserControl(item));
         }

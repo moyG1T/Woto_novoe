@@ -44,8 +44,8 @@ namespace Woto_novoe.Navigation
 
             mainWindow.ModeratorModeText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
             mainWindow.LogOutAsModeratorButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Hidden;
-            productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
+            productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
             productList.ProductActionListText.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
             productList.AddProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
 
