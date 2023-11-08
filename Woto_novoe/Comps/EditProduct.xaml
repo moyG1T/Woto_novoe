@@ -22,7 +22,7 @@
             </StackPanel>
                 
             <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel x:Name="IDStackPanel" Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock VerticalAlignment="Center">ID</TextBlock>
                     <TextBox x:Name="ID" IsReadOnly="True" Text="{Binding Id}"></TextBox>
                 </StackPanel>

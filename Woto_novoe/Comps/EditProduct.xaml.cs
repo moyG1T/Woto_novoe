@@ -29,6 +29,10 @@ namespace Woto_novoe.Comps
             InitializeComponent();
             this.product = product;
             DataContext = this.product;
+            if (this.product.Id == 0)
+            {
+                IDStackPanel.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void SelectPicButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +50,6 @@ namespace Woto_novoe.Comps
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
             if (!string.IsNullOrEmpty(Title.Text) && !string.IsNullOrEmpty(Cost.Text) && !string.IsNullOrEmpty(Discount.Text))
             {
                 if (product.Id != 0)
@@ -54,14 +57,20 @@ namespace Woto_novoe.Comps
                     App.db.SaveChanges();
                     Navigation.Navigation.Navigate(new Navigation.PageParticulars("Главная", new ProductList()));
                     MessageBox.Show("Сохранено");
-
                 }
                 else if (product.Id == 0)
                 {
-                    App.db.Product.Add(product);
-                    App.db.SaveChanges();
-                    Navigation.Navigation.Navigate(new Navigation.PageParticulars("Главная", new ProductList()));
-                    MessageBox.Show("Добавлено");
+                    if (App.db.Product.Any(x => x.Title == product.Title))
+                    {
+                        MessageBox.Show("Товар существует");
+                    }
+                    else
+                    {
+                        App.db.Product.Add(product);
+                        App.db.SaveChanges();
+                        Navigation.Navigation.Navigate(new Navigation.PageParticulars("Главная", new ProductList()));
+                        MessageBox.Show("Добавлено");
+                    }
                 }
             }
             else
