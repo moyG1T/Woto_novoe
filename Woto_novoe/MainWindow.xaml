@@ -27,6 +27,7 @@
         <TextBlock x:Name="ModeratorModeText" Foreground="White" FontSize="14" Grid.Column ="1" Grid.Row="1" HorizontalAlignment="Center">Режим модератора</TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Column ="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
             <Button x:Name="GoBackButton" Click="GoBackButton_Click">Назад</Button>
+            <Button x:Name="GoToOrder" Click="GoToOrder_Click">Корзина</Button>
         </StackPanel>
 
         <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.Row="2" NavigationUIVisibility="Hidden"/>

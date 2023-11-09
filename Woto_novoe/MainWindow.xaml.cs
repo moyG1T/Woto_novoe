@@ -53,5 +53,10 @@ namespace Woto_novoe
             Navigation.Navigation.DropHistory();
             Navigation.Navigation.Navigate(Constants.pages[1]);
         }
+
+        private void GoToOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new PageParticulars("Корзина", new OrderList()));
+        }
     }
 }

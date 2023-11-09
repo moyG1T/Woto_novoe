@@ -27,9 +27,12 @@ namespace Woto_novoe.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Feedback> Feedback { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Feedback> Feedback { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Product_Order> Product_Order { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

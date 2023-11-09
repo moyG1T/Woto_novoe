@@ -1,0 +1,36 @@
+﻿<Page x:Class="Woto_novoe.Comps.OrderList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Woto_novoe.Comps"
+      mc:Ignorable="d" 
+      d:DesignHeight="840" d:DesignWidth="1280"
+      Title="OrderList">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <WrapPanel x:Name="OrderListWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Top"></WrapPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <DockPanel  Margin="5">
+                <TextBlock HorizontalAlignment="Left">Итого</TextBlock>
+                <TextBlock HorizontalAlignment="Right">сумма</TextBlock>
+            </DockPanel>
+            <Button x:Name="DoOrder">Оформить заказ</Button>
+        </StackPanel>
+
+    </Grid>
+</Page>
