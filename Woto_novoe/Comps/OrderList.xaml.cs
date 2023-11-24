@@ -34,6 +34,7 @@ namespace Woto_novoe.Comps
             IEnumerable<Product_Order> product_orders = App.db.Product_Order.Where(x => x.OrderId == lastOrder.Id && lastOrder.StatusName == "Не выполнено");
 
 
+
             foreach (Product_Order item in product_orders)
             {
                 OrderListWrapPanel.Children.Add(new ProductOrdering(item));
