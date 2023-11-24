@@ -64,5 +64,36 @@ namespace Woto_novoe.Data
         {
             Navigation.Navigation.Navigate(new Navigation.PageParticulars("Редактирование", new EditProduct(product)));
         }
+
+        private void BusketButton_Click(object sender, RoutedEventArgs e)
+        {
+            Order order = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
+            if (order.StatusName == "Не выполнено")
+            {
+                App.db.Product_Order.Add(new Product_Order()
+                {
+                    ProductId = product.Id,
+                    OrderId = order.Id,
+                    Count = 1
+                });
+            }
+            else
+            {
+                App.db.Order.Add(new Order()
+                {
+                    OrderDate = DateTime.Now,
+                    StatusName = "Не выполнено"
+                });
+
+                App.db.Product_Order.Add(new Product_Order()
+                {
+                    ProductId = product.Id,
+                    OrderId = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault().Id,
+                    Count = 1
+                });
+            }
+
+            App.db.SaveChanges();
+        }
     }
 }

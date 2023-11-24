@@ -27,5 +27,10 @@ namespace Woto_novoe.Data
             this.product_order = product_order;
             DataContext = this.product_order;
         }
+
+        private void RemoveProductButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

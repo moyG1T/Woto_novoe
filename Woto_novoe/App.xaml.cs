@@ -15,7 +15,7 @@ namespace Woto_novoe
     /// </summary>
     public partial class App : Application
     {
-        public static HardwareShop_woto_novoeEntities db = new HardwareShop_woto_novoeEntities();
+        public static PC7_Entities db = new PC7_Entities();
         public static bool isModerator = true;
 
         public static MainWindow mainWindow;

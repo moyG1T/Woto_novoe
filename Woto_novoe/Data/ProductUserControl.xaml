@@ -33,7 +33,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <Button x:Name="BusketButton">В корзину</Button>
+                    <Button x:Name="BusketButton" Click="BusketButton_Click">В корзину</Button>
                     <Button x:Name="FollowButton">В избранное</Button>
                     <Button x:Name="CompareButton">Сравнить</Button>
                 </StackPanel>

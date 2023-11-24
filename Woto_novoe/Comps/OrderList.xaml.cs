@@ -24,11 +24,20 @@ namespace Woto_novoe.Comps
         public OrderList()
         {
             InitializeComponent();
-            IEnumerable<Product_Order> product_orders = App.db.Product_Order;
+
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            Order lastOrder = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
+            IEnumerable<Product_Order> product_orders = App.db.Product_Order.Where(x => x.OrderId == lastOrder.Id && lastOrder.StatusName == "Не выполнено");
+
+
             foreach (Product_Order item in product_orders)
             {
                 OrderListWrapPanel.Children.Add(new ProductOrdering(item));
-            }
+            };
         }
     }
 }
