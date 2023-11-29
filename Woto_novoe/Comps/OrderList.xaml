@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <DockPanel  Margin="5">
                 <TextBlock HorizontalAlignment="Left">Итого</TextBlock>
-                <TextBlock x:Name="TotalCostText" HorizontalAlignment="Right">сумма</TextBlock>
+                <TextBlock x:Name="TotalCostText" HorizontalAlignment="Right"></TextBlock>
             </DockPanel>
             <Button x:Name="DoOrder">Оформить заказ</Button>
         </StackPanel>

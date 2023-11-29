@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Woto_novoe.Comps;
 
 namespace Woto_novoe.Data
 {
@@ -30,6 +31,9 @@ namespace Woto_novoe.Data
 
             CountText.Text = product_order.Count.ToString();
             RefreshCost();
+
+            //OrderList orderList = new OrderList();
+            //orderList.Refresh();
         }
 
         private void RemoveProductButton_Click(object sender, RoutedEventArgs e)
@@ -41,6 +45,8 @@ namespace Woto_novoe.Data
         {
             if (int.Parse(CountText.Text) < 99)
                 CountText.Text = (int.Parse(CountText.Text) + 1).ToString();
+            OrderList orderList = new OrderList();
+            orderList.Refresh();
             RefreshCost();
         }
 

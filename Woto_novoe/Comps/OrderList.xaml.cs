@@ -21,6 +21,7 @@ namespace Woto_novoe.Comps
     /// </summary>
     public partial class OrderList : Page
     {
+        private int cost;
         public OrderList()
         {
             InitializeComponent();
@@ -28,17 +29,18 @@ namespace Woto_novoe.Comps
             Refresh();
         }
 
-        private void Refresh()
+        public void Refresh()
         {
             Order lastOrder = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
             IEnumerable<Product_Order> product_orders = App.db.Product_Order.Where(x => x.OrderId == lastOrder.Id && lastOrder.StatusName == "Не выполнено");
 
 
-
             foreach (Product_Order item in product_orders)
             {
+                cost += (int)(item.Product.Cost * item.Count);
                 OrderListWrapPanel.Children.Add(new ProductOrdering(item));
             };
+            TotalCostText.Text = cost.ToString();
         }
     }
 }
