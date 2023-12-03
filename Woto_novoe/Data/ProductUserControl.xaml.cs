@@ -76,6 +76,7 @@ namespace Woto_novoe.Data
                     OrderId = order.Id,
                     Count = 1
                 });
+                App.db.SaveChanges();
             }
             else
             {
@@ -84,6 +85,7 @@ namespace Woto_novoe.Data
                     OrderDate = DateTime.Now,
                     StatusName = "Не выполнено"
                 });
+                App.db.SaveChanges();
 
                 App.db.Product_Order.Add(new Product_Order()
                 {
