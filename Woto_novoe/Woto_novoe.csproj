@@ -111,7 +111,22 @@
       <DependentUpon>ProductList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Feedback.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\MyModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -129,11 +144,11 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\Order.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\PartialProduct.cs" />
     <Compile Include="Data\Product.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ProductOrdering.xaml.cs">
       <DependentUpon>ProductOrdering.xaml</DependentUpon>
@@ -142,13 +157,13 @@
       <DependentUpon>ProductUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Product_Order.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Status.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -180,6 +195,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Data\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
     <None Include="Data\MyModel.edmx.diagram">
       <DependentUpon>MyModel.edmx</DependentUpon>
     </None>
@@ -199,6 +221,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Data\MyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyModel.edmx</DependentUpon>
