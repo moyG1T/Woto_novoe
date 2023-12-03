@@ -23,7 +23,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="ProductImage" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Path = Product.ImagePath}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="220" MaxHeight="220"></Image>
+            <Image x:Name="ProductImage" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Path = Product.MainImage}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="220" MaxHeight="220"></Image>
             <DockPanel Grid.Column="3" Grid.Row="1">
                 <TextBlock x:Name="TitleText" Text="{Binding Path = Product.Title}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 <Button x:Name="RemoveProductButton" HorizontalAlignment="Right" VerticalAlignment="Top" Click="RemoveProductButton_Click">Удалить</Button>

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure.Design;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Woto_novoe.Comps;
+using System.Configuration;
 
 namespace Woto_novoe.Data
 {
@@ -23,6 +27,9 @@ namespace Woto_novoe.Data
     {
         Product_Order product_order;
         decimal? currentCost;
+        private string connectionString;
+
+
         public ProductOrdering(Product_Order product_order)
         {
             InitializeComponent();
@@ -30,15 +37,29 @@ namespace Woto_novoe.Data
             DataContext = this.product_order;
 
             CountText.Text = product_order.Count.ToString();
-            RefreshCost();
+
+            connectionString = "data source=Welcome\\MYMSSQLSERVER;initial catalog=HardwareShop_woto_novoe;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+            //RefreshCost();
 
             //OrderList orderList = new OrderList();
             //orderList.Refresh();
         }
 
+
         private void RemoveProductButton_Click(object sender, RoutedEventArgs e)
         {
 
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            string query = $"DELETE FROM PRODUCT_ORDER " +
+                $"WHERE PRODUCTID = {product_order.Product.Id} AND ORDERID = {product_order.OrderId}";
+
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
         }
 
         private void IncrementButton_Click(object sender, RoutedEventArgs e)
