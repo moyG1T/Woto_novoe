@@ -25,10 +25,13 @@ namespace Woto_novoe.Data
     /// </summary>
     public partial class ProductOrdering : UserControl
     {
-        Product_Order product_order;
-        decimal? currentCost;
-        private string connectionString;
+        private Product_Order product_order;
 
+        private decimal? currentCost;
+        private int? currentCount;
+
+        private SqlConnection sqlConnection;
+        private string connectionString;
 
         public ProductOrdering(Product_Order product_order)
         {
@@ -36,20 +39,18 @@ namespace Woto_novoe.Data
             this.product_order = product_order;
             DataContext = this.product_order;
 
-            CountText.Text = product_order.Count.ToString();
-
             connectionString = "data source=Welcome\\MYMSSQLSERVER;initial catalog=HardwareShop_woto_novoe;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;";
-            //RefreshCost();
 
-            //OrderList orderList = new OrderList();
-            //orderList.Refresh();
+            currentCount = App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id).FirstOrDefault().Count;
+            CountText.Text = currentCount.ToString();
+            currentCost = App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id).FirstOrDefault().Product.Cost;
+            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}";
         }
 
 
         private void RemoveProductButton_Click(object sender, RoutedEventArgs e)
         {
-
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
 
@@ -62,27 +63,26 @@ namespace Woto_novoe.Data
             sqlConnection.Close();
         }
 
-        private void IncrementButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(CountText.Text) < 99)
-                CountText.Text = (int.Parse(CountText.Text) + 1).ToString();
-            OrderList orderList = new OrderList();
-            orderList.Refresh();
-            RefreshCost();
-        }
-
         private void DecrementButton_Click(object sender, RoutedEventArgs e)
         {
-            if (int.Parse(CountText.Text) > 1)
-                CountText.Text = (int.Parse(CountText.Text) - 1).ToString();
-            RefreshCost();
+            if (currentCount > 1)
+                currentCount--;
+            CountText.Text = currentCount.ToString();
+
+            App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id && x.OrderId == product_order.OrderId).FirstOrDefault().Count = currentCount;
+            App.db.SaveChanges();
+            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}";
         }
 
-        private void RefreshCost()
+        private void IncrementButton_Click(object sender, RoutedEventArgs e)
         {
-            currentCost = product_order.Product.Cost;
-            currentCost *= int.Parse(CountText.Text);
-            TotalCostPerProductText.Text = $"{currentCost:0}₽";
+            if (currentCount < 99)
+                currentCount++;
+            CountText.Text = currentCount.ToString();
+
+            App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id && x.OrderId == product_order.OrderId).FirstOrDefault().Count = currentCount;
+            App.db.SaveChanges();
+            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}";
         }
     }
 }

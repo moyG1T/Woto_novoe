@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Woto_novoe.Data;
 
 namespace Woto_novoe.Comps
@@ -22,6 +23,7 @@ namespace Woto_novoe.Comps
     public partial class OrderList : Page
     {
         private int cost;
+        private Order lastOrder;
         public OrderList()
         {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace Woto_novoe.Comps
 
         public void Refresh()
         {
-            Order lastOrder = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
+            lastOrder = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
             IEnumerable<Product_Order> product_orders = App.db.Product_Order.Where(x => x.OrderId == lastOrder.Id && lastOrder.StatusName == "Не выполнено");
 
 
@@ -41,6 +43,11 @@ namespace Woto_novoe.Comps
                 OrderListWrapPanel.Children.Add(new ProductOrdering(item));
             };
             TotalCostText.Text = cost.ToString();
+        }
+
+        private void DoOrder_Click(object sender, RoutedEventArgs e)
+        {
+            App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault().StatusName = "Выполнено";
         }
     }
 }
