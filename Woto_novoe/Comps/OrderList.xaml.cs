@@ -24,6 +24,8 @@ namespace Woto_novoe.Comps
     {
         private int cost;
         private Order lastOrder;
+
+
         public OrderList()
         {
             InitializeComponent();
@@ -39,15 +41,19 @@ namespace Woto_novoe.Comps
 
             foreach (Product_Order item in product_orders)
             {
-                cost += (int)(item.Product.Cost * item.Count);
+                cost += (int)(item.Product.GetDiscountCost * item.Count);
                 OrderListWrapPanel.Children.Add(new ProductOrdering(item));
             };
-            TotalCostText.Text = cost.ToString();
+            TotalCostText.Text = $"{cost:0}₽" ;
         }
 
         private void DoOrder_Click(object sender, RoutedEventArgs e)
         {
             App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault().StatusName = "Выполнено";
+            App.db.SaveChanges();
+
+            Navigation.Navigation.Navigate(new Navigation.PageParticulars("Главная", new ProductList()));
+            MessageBox.Show("Заказ выполнен");
         }
     }
 }

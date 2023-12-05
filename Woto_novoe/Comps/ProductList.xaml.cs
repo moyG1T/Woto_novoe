@@ -94,5 +94,9 @@ namespace Woto_novoe.Comps
             RefreshFilters();
         }
 
+        private void AllOrdersProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new Navigation.PageParticulars("История заказов", new AllOrders()));
+        }
     }
 }

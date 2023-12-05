@@ -53,9 +53,12 @@
             </ScrollViewer>
         </Border>
 
-        <StackPanel x:Name="ProductActionListText" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="0,10,0,10">
+        <StackPanel x:Name="ProductActionListText" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="2" Margin="0,10,0,10">
             <TextBlock>Продукт</TextBlock>
-            <Button x:Name="AddProductButton" Click="AddProductButton_Click">Добавить</Button>
+            <DockPanel>
+                <Button x:Name="AddProductButton" HorizontalAlignment="Left" Click="AddProductButton_Click">Добавить</Button>
+                <Button x:Name="AllOrdersProductButton" HorizontalAlignment="Right" Click="AllOrdersProductButton_Click">Список заказов</Button>
+            </DockPanel>
         </StackPanel>
     </Grid>
 </Page>

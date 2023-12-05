@@ -43,8 +43,8 @@ namespace Woto_novoe.Data
 
             currentCount = App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id).FirstOrDefault().Count;
             CountText.Text = currentCount.ToString();
-            currentCost = App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id).FirstOrDefault().Product.Cost;
-            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}";
+            currentCost = App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id).FirstOrDefault().Product.GetDiscountCost;
+            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}₽";
         }
 
 
@@ -71,7 +71,7 @@ namespace Woto_novoe.Data
 
             App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id && x.OrderId == product_order.OrderId).FirstOrDefault().Count = currentCount;
             App.db.SaveChanges();
-            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}";
+            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}₽";
         }
 
         private void IncrementButton_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace Woto_novoe.Data
 
             App.db.Product_Order.Where(x => x.ProductId == product_order.Product.Id && x.OrderId == product_order.OrderId).FirstOrDefault().Count = currentCount;
             App.db.SaveChanges();
-            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}";
+            TotalCostPerProductText.Text = $"{currentCost * currentCount:0}₽";
         }
     }
 }

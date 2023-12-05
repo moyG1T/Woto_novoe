@@ -29,7 +29,6 @@ namespace Woto_novoe
 
             App.mainWindow = this;
             Navigation.Navigation.Navigate(new PageParticulars("Главная", new ProductList()));
-
             //var path = @"C:\Users\212119\Desktop\.pics";
             /*foreach (var item in App.db.Product.ToArray())
             {

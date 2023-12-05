@@ -26,18 +26,18 @@ namespace Woto_novoe.Data
         Product product;
         public ProductUserControl(Product _product)
         {
-
             InitializeComponent();
             product = _product;
-            //Navigation.Navigation.productUserControl = this;
+
             EditProductButton.Visibility = App.isModerator ? Visibility.Visible : Visibility.Collapsed;
+            BusketButton.IsEnabled = App.isModerator ? false : true;
 
             ProductImage.Source = GetImage(product.MainImage);
             ProductNameText.Text = product.Title;
             CostWDiscountText.Text = $"{product.GetDiscountCost:0}₽";
             CostText.Text = $"{product.Cost:0}₽";
             CostText.Visibility = product.CostVisibility;
-            
+
             RatingText.Text = product.GetAverageFeedback;
             RatingText.Visibility = product.FeedbackVisibility;
             ReviewAmountText.Text = product.GetFeedbackAmount;
@@ -67,16 +67,23 @@ namespace Woto_novoe.Data
 
         private void BusketButton_Click(object sender, RoutedEventArgs e)
         {
-            Order order = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
-            if (order.StatusName == "Не выполнено")
+            Order lastOrder = App.db.Order.OrderByDescending(x => x.Id).FirstOrDefault();
+            if (lastOrder.StatusName == "Не выполнено")
             {
-                App.db.Product_Order.Add(new Product_Order()
+                if (App.db.Product_Order.Where(x => x.OrderId == lastOrder.Id && x.ProductId == product.Id).Count() == 0)
                 {
-                    ProductId = product.Id,
-                    OrderId = order.Id,
-                    Count = 1
-                });
-                App.db.SaveChanges();
+                    App.db.Product_Order.Add(new Product_Order()
+                    {
+                        ProductId = product.Id,
+                        OrderId = lastOrder.Id,
+                        Count = 1
+                    });
+                    App.db.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Уже в корзине");
+                }
             }
             else
             {

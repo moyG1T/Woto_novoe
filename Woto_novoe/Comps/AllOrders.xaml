@@ -1,0 +1,25 @@
+﻿<Page x:Class="Woto_novoe.Comps.AllOrders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Woto_novoe.Comps"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="AllOrders">
+
+    <Grid>
+        <ListView x:Name="OrdersListView" Grid.ColumnSpan="3" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Id}">ID</GridViewColumn>
+                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = OrderId}">Заказ</GridViewColumn>
+                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Product.Title}">Продукт</GridViewColumn>
+                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Count}">Количество</GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
