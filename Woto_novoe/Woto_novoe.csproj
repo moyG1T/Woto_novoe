@@ -118,7 +118,22 @@
       <DependentUpon>ProductList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Feedback.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LastRace.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LastRace.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LastRace.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LastRace.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LastRace.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LastRace.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LastRace.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -151,11 +166,12 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\Order.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LastRace.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\PartialProduct.cs" />
+    <Compile Include="Data\PartialProduct_Order.cs" />
     <Compile Include="Data\Product.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LastRace.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ProductOrdering.xaml.cs">
       <DependentUpon>ProductOrdering.xaml</DependentUpon>
@@ -164,13 +180,13 @@
       <DependentUpon>ProductUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Product_Order.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LastRace.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Status.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LastRace.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LastRace.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -206,6 +222,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Data\LastRace.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LastRace.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\LastRace.edmx.diagram">
+      <DependentUpon>LastRace.edmx</DependentUpon>
+    </None>
     <None Include="Data\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -228,6 +251,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\LastRace.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LastRace.edmx</DependentUpon>
+      <LastGenOutput>LastRace.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\LastRace.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LastRace.edmx</DependentUpon>
+      <LastGenOutput>LastRace.cs</LastGenOutput>
+    </Content>
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

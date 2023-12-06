@@ -9,17 +9,44 @@
       Title="AllOrders">
 
     <Grid>
-        <ListView x:Name="OrdersListView" Grid.ColumnSpan="3" Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Id}">ID</GridViewColumn>
-                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = OrderId}">Заказ</GridViewColumn>
-                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Product.Title}">Продукт</GridViewColumn>
-                        <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Count}">Количество</GridViewColumn>
-                    </GridView.Columns>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ComboBox HorizontalAlignment="Left" Name="StatusCombo" SelectionChanged="StatusCombo_SelectionChanged">
+                    <ComboBoxItem>По умолчанию</ComboBoxItem>
+                    <ComboBoxItem>Не выполнено</ComboBoxItem>
+                    <ComboBoxItem>Выполнено</ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="SetTrueButton" Click="SetTrueButton_Click">Выполнено</Button>
+            </StackPanel>
+            
+            <ListView x:Name="OrdersListView" Grid.ColumnSpan="3" Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Width="150" DisplayMemberBinding="{Binding Path = Id}">Заказ</GridViewColumn>
+                            <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = OrderDate}">Дата</GridViewColumn>
+                            <GridViewColumn Width="250">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ListView ItemsSource="{Binding Product_Order}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                        <TextBlock Text="{Binding Product.Title}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                                        <TextBlock Text="{Binding Count}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path = Product_Order.Count}">Количество</GridViewColumn>
+                            <GridViewColumn Width="250" DisplayMemberBinding="{Binding Path = Status.StatusName}">Статус</GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
